@@ -38,6 +38,8 @@ from models import Restaurant, Review
 def index():
     print('Request for index page received')
     restaurants = Restaurant.query.all()
+    for restaurant in restaurants:
+        print(restaurant)
     return render_template('index.html', restaurants=restaurants)
 
 @app.route('/<int:id>', methods=['GET'])
