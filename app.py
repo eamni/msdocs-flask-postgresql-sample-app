@@ -121,7 +121,7 @@ def favicon():
     
 # DELETEリクエストを処理するエンドポイント
 @app.route('/delete/<int:id>', methods=['DELETE'])
-# @csrf.exempt
+@csrf.exempt
 def delete(id):
     try:
         restaurant = Restaurant.query.where(Restaurant.id == id).first()
