@@ -120,7 +120,7 @@ def favicon():
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
     
 # DELETEリクエストを処理するエンドポイント
-@app.route('/delete/<int:id>', methods=['DELETE'])
+@app.route('/<int:id>', methods=['DELETE'])
 @csrf.exempt
 def delete(id):
     try:
