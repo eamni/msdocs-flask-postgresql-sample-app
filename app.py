@@ -135,7 +135,7 @@ def delete(id):
         # restaurant.name = name
         # restaurant.street_address = street_address
         # restaurant.description = description
-        db.session.delete(restaurant)
+        db.session.delete(restaurant.id)
         db.session.commit()
 
         return index()
