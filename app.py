@@ -38,10 +38,6 @@ from models import Restaurant, Review
 def index():
     print('Request for index page received')
     restaurants = Restaurant.query.all()
-    with open("output.txt", "w") as f:
-    # 文字列をファイルに書き込む   
-        for restaurant in restaurants:
-            f.write(restaurant)
     return render_template('index.html', restaurants=restaurants)
 
 @app.route('/<int:id>', methods=['GET'])
