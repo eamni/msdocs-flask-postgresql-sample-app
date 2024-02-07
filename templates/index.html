@@ -62,6 +62,11 @@
                   {% endfor %}
               </tbody>
           </table>
+          <div>
+            {% for restaurant in restaurants %}
+              <div>{{ restaurant }}</div>
+            {% endfor %}
+          </div>
       {% else %}
           <p>No restaurants exist.  Select Add new restaurant to add one.</p>
       {% endif %}
