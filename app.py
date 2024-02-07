@@ -120,11 +120,12 @@ def favicon():
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
     
 # DELETEリクエストを処理するエンドポイント
-@app.route('/<int:id>', methods=['DELETE'])
+@app.route('/delete/<int:id>', methods=['DELETE'])
 @csrf.exempt
 def delete(id):
     try:
         restaurant = Restaurant.query.where(Restaurant.id == id).first()
+        params = {"id": restaurant.id}
     except (KeyError):
         # Redisplay the question voting form.
         return render_template('index.html', {
@@ -135,7 +136,7 @@ def delete(id):
         # restaurant.name = name
         # restaurant.street_address = street_address
         # restaurant.description = description
-        db.session.delete(restaurant.id)
+        db.session.delete(params)
         db.session.commit()
 
         return index()
