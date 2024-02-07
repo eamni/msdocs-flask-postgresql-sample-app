@@ -118,6 +118,28 @@ def utility_processor():
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    
+# DELETEリクエストを処理するエンドポイント
+@app.route('/delete/<int:id>', methods=['DELETE'])
+# @csrf.exempt
+def delete(id):
+    try:
+        restaurant = Restaurant.query.where(Restaurant.id == id).first()
+    except (KeyError):
+        # Redisplay the question voting form.
+        return render_template('index.html', {
+            'error_message': "削除に失敗しました。",
+        })
+    else:
+        # restaurant = Restaurant()
+        # restaurant.name = name
+        # restaurant.street_address = street_address
+        # restaurant.description = description
+        db.session.delete(restaurant)
+        db.session.commit()
+
+        return index()
+
 
 if __name__ == '__main__':
     app.run()
