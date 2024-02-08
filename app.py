@@ -120,7 +120,7 @@ def favicon():
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
     
 # DELETEリクエストを処理するエンドポイント
-@app.route('/delete/<int:id>', methods=['POST'])
+@app.route('/<int:id>', methods=['POST'])
 def delete(id):
     try:
         restaurant = Restaurant.query.get(id)
